@@ -1,0 +1,3 @@
+[submodule "lib/StepperDriver"]
+	path = lib/StepperDriver
+	url = https://github.com/laurb9/StepperDriver
