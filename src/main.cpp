@@ -4,25 +4,26 @@
 
 #define MOTOR_STEPS 200
 
-#define DIR 4
-#define STEP 3
-#define MICROSTEPS 32
+#define DIR 12
+#define STEP 11
 
-DRV8825 stepper(MOTOR_STEPS, DIR, STEP, 10, 11, 12);
+#define ENABLE 10
+
+
+DRV8825 stepper(MOTOR_STEPS, DIR, STEP, ENABLE	);
 
 String command;
 
 
 
 void setup() {
-  stepper.setRPM(180);
+  stepper.setRPM(50);
   Serial.begin(9600);
 }
 
 void loop() {
   if(Serial.available()){
       char received = Serial.read();
-      debugSerial.write(received);
       if(received == '\n'){
         Serial.write("OK\n");
         stepper.move(command.toInt());
