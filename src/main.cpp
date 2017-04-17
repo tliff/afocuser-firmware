@@ -25,8 +25,8 @@ void loop() {
   if(Serial.available()){
       char received = Serial.read();
       if(received == '\n'){
-        Serial.write("OK\n");
         stepper.move(command.toInt());
+        Serial.write("OK\n");
         command = "";
       }
       else{
